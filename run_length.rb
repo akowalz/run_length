@@ -28,7 +28,7 @@ def decode(e)
   final.join
 end
 
-# Looked into Ruby's assertion functions but didn't really feel like
+# Looked into Ruby's assertion functions but didn't really feel like importing
 # It was less work to just write one myself than figure all that out
 def assert_equal(exp1, exp2)
   if exp1 == exp2
