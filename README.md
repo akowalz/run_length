@@ -37,6 +37,6 @@ To decode/decompress test_compressed.txt run:
 
 `$ ruby file_compress.rb decompress test_compressed.txt test_decompressed.txt`
 
-There's no real error checking on this interface, so be careful about modiying files.  The interface is still very simple and limited, but it's enough to quickly fire up and encode some files with. 
+There's no real error checking on this interface, so be careful about modifying files.  The interface is still very simple and limited, but it's enough to quickly fire up and encode some files with. 
 
 Again, I say "compressed" as the operation, but in reality the compressed file will in all likelyhood be encoded but bigger in terms of bytes than the original. Still, I thought it was a fun little tool to play around with.  I might look into *actual* compression techniques in the future.
