@@ -1,3 +1,5 @@
+# Simple encoder, takes a bit vector string like "001010011"
+# Returns an encoded string like "03412"
 def encode(bv)
   code = []
   last = bv[0]
@@ -17,8 +19,13 @@ def encode(bv)
   code.join
 end
 
+# Simple decoder, takes an encoded string
 def decode(e)
   current = e[0]
+  if current != "1" or current != "0"
+    return "Could not decode, malformed encoded input"
+  end
+
   final = []
 
   e[1..e.length].split("").each do |r|
@@ -41,6 +48,7 @@ def assert_equal(exp1, exp2)
   end
 end
 
+# Tests I used to check if the encoder was working
 def encode_tests
   tests = {
     "000111" => "033",
@@ -54,6 +62,7 @@ def encode_tests
   end
 end
 
+# Tests I used to check if the decoder was working
 def decode_tests
   tests = [ 
     "000111",
@@ -67,7 +76,8 @@ def decode_tests
   end
 end
 
-def saved(bv)
+# Prints statistics of encoding the given bit vector and returns the difference in file size
+def print_statistics(bv)
   diff = bv.length- encode(bv).length
   percent_reduction = (1 - (bv.length - diff).to_f/bv.length) * 100
   puts "Original Length: #{bv.length}"
@@ -77,6 +87,8 @@ def saved(bv)
   diff
 end
 
+# Tests the encoder on randomly generated bit vectors.  Handy for checking performance.  
+# You can specify the options you want to use or get a totally random vector by default
 def performance_test(params = {})
   length_bv = params[:length] ? params[:length] : rand(1000..10000).to_i 
   distribution = params[:distribution] ? params[:distribution] : rand
@@ -88,7 +100,7 @@ def performance_test(params = {})
     end
   end
   puts "Distribution: #{distribution}"
-  saved bv
+  print_statistics bv
 end
 
 
