@@ -5,9 +5,7 @@ A simple run length encoder built in Ruby for encoding bit vector strings and "c
 
 I've also included a command line interface for "compressing" text files.  "Compressing" I put in quotes because it actually converts every ASCII character in a file to binary, then converts this binary string to a run lenth encoded string, so in the end the file isn't really any shorter than the original, and in fact is almost certainly going to be longer. It will encode it though, which is cool and handy if you want to keep the contents of a file secret I guess.
 
-
-A few other things are included, such as some simple tests for the decoder and encoder that I used during this project's quick development lifecycle (a Saturday afternoon).  Overall it's pretty simple but the code is fairly messy and hacked together.  This project was mostly for fun.  
-
+The code overall is small and simple, just something I threw together as an experiment one afternoon.  Mostly I was curious about how well such a simple encoder could compress bit vectors, encoding ASCII files was an afterthought that I clearly didn't think through all the way. 
 
 #### How the encoder works
 
