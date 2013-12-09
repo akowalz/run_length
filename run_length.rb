@@ -35,47 +35,6 @@ def decode(e)
   final.join
 end
 
-# Looked into Ruby's assertion functions but didn't really feel like importing
-# It was less work to just write one myself than figure all that out
-def assert_equal(exp1, exp2)
-  if exp1 == exp2
-    puts "Assertion passed!"
-    true
-  else 
-    puts "Assertion failed"
-    puts "Expected #{exp1} but got #{exp2}"
-    nil
-  end
-end
-
-# Tests I used to check if the encoder was working
-def encode_tests
-  tests = {
-    "000111" => "033",
-    "0011" => "022", 
-    "01" => "011", 
-    "1100111" => "1223", 
-    "11100010" => "13311"
-  }
-  tests.each do |k,v|
-    assert_equal encode(k), v
-  end
-end
-
-# Tests I used to check if the decoder was working
-def decode_tests
-  tests = [ 
-    "000111",
-    "0011",
-    "01",
-    "1100111",
-    "11100010"
-    ] 
-  tests.each do |v|
-    assert_equal(v, decode(encode(v)))
-  end
-end
-
 # Prints statistics of encoding the given bit vector and returns the difference in file size
 def print_statistics(bv)
   diff = bv.length- encode(bv).length
